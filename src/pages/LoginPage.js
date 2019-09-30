@@ -15,16 +15,16 @@ class LoginPage extends React.Component {
   }
 
   state = {
-    username: ''
+    username: '',
+    password: ''
   }
 
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <TextInput onChangeText={(t) => {this.setState({username: t})}} placeholder='Username' value={this.state.username} />
-        <Button onPress={() => {this.navigate('Index')}}>
-          Log In
-        </Button>
+        <TextInput onChangeText={(t) => {this.setState({password: t})}} placeholder='Password' value={this.state.password} />
+        <Button onPress={() => {this.navigate('Index')}}>Log In</Button>
       </View>
     )
   }

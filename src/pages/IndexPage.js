@@ -4,8 +4,13 @@ import { StyleSheet, View } from 'react-native';
 import Button from '../components/Button';
 
 class IndexPage extends React.Component {
-  static navigationOptions = {
-    title: 'Index'
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: 'Index',
+      headerRight: (
+        <Button onPress={() => {navigation.navigate('Auth')}} mode='text' color='red'>Logout</Button>
+      )
+    }
   }
 
   constructor(props) {
@@ -16,9 +21,7 @@ class IndexPage extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Button onPress={() => {this.navigate('Second')}}>
-            Second screen
-        </Button>
+        <Button onPress={() => {this.navigate('Second')}}>Second screen</Button>
       </View>
     )
   }
