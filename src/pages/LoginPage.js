@@ -22,8 +22,15 @@ class LoginPage extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TextInput onChangeText={(t) => {this.setState({username: t})}} placeholder='Username' value={this.state.username} />
-        <TextInput onChangeText={(t) => {this.setState({password: t})}} placeholder='Password' value={this.state.password} />
+        <TextInput
+          onChangeText={(t) => {this.setState({username: t})}}
+          placeholder='Username'
+          value={this.state.username} />
+        <TextInput
+          onChangeText={(t) => {this.setState({password: t})}}
+          placeholder='Password'
+          value={this.state.password}
+          secureTextEntry={true}/>
         <Button onPress={() => {this.navigate('Index')}}>Log In</Button>
       </View>
     )

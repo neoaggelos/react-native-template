@@ -1,8 +1,6 @@
 import React from 'react';
 import { TextInput as _TextInput, StyleSheet } from 'react-native';
 
-import { Text } from 'react-native';
-
 class TextInput extends React.Component {
   render() {
     const { style, ...otherProps } = this.props;
@@ -18,12 +16,11 @@ class TextInput extends React.Component {
 
 const styles = StyleSheet.create({
   textInput: {
-    height: 40,
-    borderColor: 'blue',
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: 10,
+    height: 50,
+    borderColor: 'darkgray',
+    borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: 20,
-    width: 300,
+    width: '80%'
   }
 })
 
