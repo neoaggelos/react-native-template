@@ -7,6 +7,8 @@ Features:
 * Switch navigation for login screen.
 * Button and TextInput components.
 * Simple index and second page.
+* Google Maps page.
+
 
 ## Screenshots
 
