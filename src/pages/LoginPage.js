@@ -22,7 +22,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{marginBottom: 20, fontSize: 20, fontFamily: 'Roboto'}}>Evolution Projects</Text>
+        <Text style={{marginBottom: 20, fontSize: 20, fontFamily: 'Roboto'}}>Login</Text>
         <TextInput
           onChangeText={(t) => {this.setState({username: t})}}
           placeholder='Username'
