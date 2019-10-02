@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import MapView , { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView , { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import Geolocation from 'react-native-geolocation-service';
 
 class SecondPage extends React.Component {
   static navigationOptions = {
@@ -14,19 +15,55 @@ class SecondPage extends React.Component {
     this.navigate = this.props.navigation.navigate;
   }
 
+  componentDidMount() {
+    if (true) {
+      console.log('TRIED')
+      Geolocation.getCurrentPosition((pos) => {
+        console.log('PROMISED YOU')
+        console.log(pos)
+        this.setState({location: pos.coords})
+      }, (err) => {
+        console.log('ERROR')
+        console.log(err)
+      })
+      Geolocation.watchPosition((pos) => {
+        console.log('POSITION')
+        console.log(pos)
+      }, (err) => {
+        console.log('ERROR')
+        console.log(err)
+      }, {
+        enableHighAccuracy: true,
+        // showLocationDialog: true,
+        // distanceFilter: 0,
+        // maximumAge: 10000,
+        // timeout: 15000
+      })
+    }
+  }
+
+  state = {
+    location: {latitude: 37, longitude: 22.5}
+  }
+
   render() {
     return (
       <View>
         <MapView
           provider={PROVIDER_GOOGLE}
           region={{
-            latitude: 37,
-            longitude: 22.5,
+            latitude: this.state.location.latitude,
+            longitude: this.state.location.longitude,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121
           }}
-          style={{width: 400, height: 400, borderColor: 'black', borderWidth:20}}>
-          </MapView>
+          style={{width: '100%', height: '100%'}}>
+          <Marker
+            draggable={true}
+            title='You are here'
+            description='But why?'
+            coordinate={this.state.location}></Marker>
+        </MapView>
       </View>
     )
   }

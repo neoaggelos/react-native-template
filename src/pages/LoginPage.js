@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import Button from '../components/Button'
 import TextInput from '../components/TextInput'
@@ -22,6 +22,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={{marginBottom: 20, fontSize: 20, fontFamily: 'Roboto'}}>Evolution Projects</Text>
         <TextInput
           onChangeText={(t) => {this.setState({username: t})}}
           placeholder='Username'
