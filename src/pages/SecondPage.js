@@ -6,7 +6,7 @@ import Geolocation from 'react-native-geolocation-service';
 
 class SecondPage extends React.Component {
   static navigationOptions = {
-      title: 'Second Page'
+    title: 'Second Page',
   }
 
   constructor(props) {
@@ -18,28 +18,25 @@ class SecondPage extends React.Component {
   componentDidMount() {
     if (true) {
       console.log('TRIED')
-      Geolocation.getCurrentPosition((pos) => {
-        console.log('PROMISED YOU')
+      Geolocation.watchPosition((pos) => {
+        console.log('POSITION')
         console.log(pos)
         this.setState({location: pos.coords})
       }, (err) => {
         console.log('ERROR')
         console.log(err)
-      })
-      Geolocation.watchPosition((pos) => {
-        console.log('POSITION')
-        console.log(pos)
-      }, (err) => {
-        console.log('ERROR')
-        console.log(err)
       }, {
         enableHighAccuracy: true,
-        // showLocationDialog: true,
-        // distanceFilter: 0,
-        // maximumAge: 10000,
-        // timeout: 15000
+        showLocationDialog: true,
+        distanceFilter: 0,
+        maximumAge: 10000,
+        timeout: 15000
       })
     }
+  }
+
+  componentWillUnmount() {
+    Geolocation.clearWatch()
   }
 
   state = {
@@ -59,10 +56,11 @@ class SecondPage extends React.Component {
           }}
           style={{width: '100%', height: '100%'}}>
           <Marker
-            draggable={true}
+            draggable
             title='You are here'
             description='But why?'
-            coordinate={this.state.location}></Marker>
+            coordinate={this.state.location}
+            onPress={() => this.navigate('Modal')} />
         </MapView>
       </View>
     )
